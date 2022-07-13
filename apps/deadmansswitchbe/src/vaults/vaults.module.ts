@@ -1,0 +1,14 @@
+import { Module } from '@nestjs/common';
+import { VaultsService } from './vaults.service';
+import { VaultsResolver } from './vaults.resolver';
+
+import { Vault, VaultSchema } from './entities/vault.schema';
+import { MongooseModule } from '@nestjs/mongoose';
+
+@Module({
+  imports: [
+    MongooseModule.forFeature([{ name: Vault.name, schema: VaultSchema }]),
+  ],
+  providers: [VaultsResolver, VaultsService],
+})
+export class VaultsModule {}
