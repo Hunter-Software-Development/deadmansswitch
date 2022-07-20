@@ -7,5 +7,5 @@ spec:
     app: server
   ports:
     - protocol: TCP
-      port: 3000
+      port: 3030
   type: NodePort

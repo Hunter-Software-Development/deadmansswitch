@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: server
-          image: deadmansswitch_server:latest
+          image: server_production:latest
           imagePullPolicy: Never
           resources:
             limits:
@@ -22,3 +22,8 @@ spec:
               cpu: '500m'
           ports:
             - containerPort: 3000
+          env:
+            - name: MONGO_DB_CONNECTION
+              value: mongodb+srv://Cloak2656:Pried3-Circling-Doctrine@cluster0.5cythdj.mongodb.net/deadmansswitch?authSource=admin&replicaSet=atlas-nkjaoa-shard-0&readPreference=primary&appname=MongoDB%20Compass&ssl=true
+            - name: PORT
+              value: '3030'
