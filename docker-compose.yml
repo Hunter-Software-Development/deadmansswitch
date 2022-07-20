@@ -1,3 +1,4 @@
+version: "2"
 services:
   client:
     environment:
@@ -18,9 +19,9 @@ services:
       - WATCHPACK_POLLING=true
     build:
       context: .
-      dockerfile: ./apps/deadmansswitchbe/Dockerfile
+      dockerfile: ./apps/server/Dockerfile
       target: development
-    command: npm run start:dev deadmansswitchbe
+    command: npm run start:dev server
     env_file: ./.env
     depends_on:
       - mongodb-primary

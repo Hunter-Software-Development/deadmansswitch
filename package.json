@@ -1,5 +1,5 @@
 {
-  "name": "deadmansswitchbe",
+  "name": "deadmansswitch",
   "version": "0.0.1",
   "description": "",
   "author": "",
@@ -18,11 +18,12 @@
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./apps/deadmansswitchbe/test/jest-e2e.json",
+    "test:e2e": "jest --config ./apps/server/test/jest-e2e.json",
     "installall": "npm install && cd ./apps/client && npm install"
   },
   "dependencies": {
     "@nestjs/apollo": "^10.0.17",
+    "@nestjs/common": "^9.0.4",
     "@nestjs/config": "^2.2.0",
     "@nestjs/graphql": "^10.0.18",
     "@nestjs/mongoose": "^9.2.0",
