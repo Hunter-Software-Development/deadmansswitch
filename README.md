@@ -7,10 +7,11 @@ localhost:3030/graphql
 
 docker-compose stop; docker-compose rm -f; docker-compose build --no-cache; docker-compose up -d;
 
-docker build --target production -t server_production -f ./apps/server/Dockerfile . ;
+docker build -t production -t server_production -f ./apps/server/Dockerfile . ;
 docker build -t client_production -f ./apps/client/Dockerfile.prod ./apps/client ;
 
 helm uninstall deadmansswitch;
+helm dep build ./helm;
 helm install deadmansswitch ./helm;
 kubectl get service;
 kubectl get po;
