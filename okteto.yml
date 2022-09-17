@@ -6,4 +6,4 @@ build:
     dockerfile: ./apps/server/Dockerfile
 deploy:
   - name: Deploy Via Helm
-    command: helm dep build ./helm; helm install deadmansswitch ./helm;
+    command: helm repo add bitnami https://charts.bitnami.com/bitnami; helm dep build ./helm; helm install deadmansswitch ./helm;
