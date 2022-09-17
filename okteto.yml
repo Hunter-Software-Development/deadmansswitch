@@ -1,0 +1,9 @@
+build:
+  client:
+    context: ./apps/client
+  server:
+    context: .
+    dockerfile: ./apps/server/Dockerfile
+deploy:
+  - name: Deploy Via Helm
+    command: helm dep build ./helm; helm install deadmansswitch ./helm;
