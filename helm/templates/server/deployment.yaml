@@ -24,7 +24,6 @@ spec:
             - containerPort: 3030
           env:
             - name: MONGO_DB_CONNECTION
-              value: mongodb://root:password1234@deadmansswitch-mongodb-arbiter-headless:27017?directConnection=true&ssl=false&authSource=admin&w=1
-
+              value: mongodb://root:password123@deadmansswitch-mongodb-headless:27017
             - name: PORT
               value: '3030'

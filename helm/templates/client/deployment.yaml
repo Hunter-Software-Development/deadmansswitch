@@ -24,6 +24,9 @@ spec:
             - containerPort: 3000
           env:
             - name: REACT_APP_GOOGLE_CLIENT
-              value: 01968243070-pngp8trfvlt9saqfs420cs5082341n9p.apps.googleusercontent.comreadPreference=primary&appname=MongoDB%20Compass&ssl=true
+              valueFrom:
+                secretKeyRef:
+                  key: REACT_APP_GOOGLE_CLIENT
+                  name: mysecret
             - name: REACT_APP_GRAPHQL_URL_VAR
               value: http://localhost/server/graphql

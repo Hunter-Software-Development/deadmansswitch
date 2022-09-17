@@ -88,5 +88,4 @@ affinity: {}
 mongodb:
   architecture: replicaset
   auth:
-    rootPassword: password1234
-    databases: [deadmansswitch]
+    rootPassword: password123
