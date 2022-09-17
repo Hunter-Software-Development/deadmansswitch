@@ -89,3 +89,5 @@ mongodb:
   architecture: replicaset
   auth:
     rootPassword: password123
+  persistence:
+    size: 512Mi
