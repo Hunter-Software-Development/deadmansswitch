@@ -1,9 +1,9 @@
 build:
-  # client:
-  #   context: ./apps/client
-  # server:
-  #   context: .
-  #   dockerfile: ./apps/server/Dockerfile
+  client_production:
+    context: ./apps/client
+  server_production:
+    context: .
+    dockerfile: ./apps/server/Dockerfile
 deploy:
   - name: Deploy Via Helm
-    command: helm repo add bitnami https://charts.bitnami.com/bitnami; helm dep build ./helm; helm install deadmansswitch ./helm;
+    command: helm uninstall deadmansswitch; helm repo add bitnami https://charts.bitnami.com/bitnami; helm dep build ./helm; helm install deadmansswitch ./helm;
