@@ -18,7 +18,7 @@ build:
   #  - OKTETO_BUILD_SERVER_PRODUCTION_REPOSITORY: image repo
   #  - OKTETO_BUILD_SERVER_PRODUCTION_IMAGE: image name
   #  - OKTETO_BUILD_SERVER_PRODUCTION_TAG: image tag
-  client:
+  server:
     context: .
     dockerfile: ./apps/server/Dockerfile
 
