@@ -1,9 +1,49 @@
+name: deadmansswitch
+
+# The build section defines how to build the images of your development environment
+# More info: https://www.okteto.com/docs/reference/manifest/#build
 build:
+
+  # You can use the following env vars to refer to this image in your deploy commands:
+  #  - OKTETO_BUILD_CLIENT_PRODUCTION_REGISTRY: image registry
+  #  - OKTETO_BUILD_CLIENT_PRODUCTION_REPOSITORY: image repo
+  #  - OKTETO_BUILD_CLIENT_PRODUCTION_IMAGE: image name
+  #  - OKTETO_BUILD_CLIENT_PRODUCTION_TAG: image tag
   client_production:
     context: ./apps/client
+    dockerfile: Dockerfile
+
+  # You can use the following env vars to refer to this image in your deploy commands:
+  #  - OKTETO_BUILD_SERVER_PRODUCTION_REGISTRY: image registry
+  #  - OKTETO_BUILD_SERVER_PRODUCTION_REPOSITORY: image repo
+  #  - OKTETO_BUILD_SERVER_PRODUCTION_IMAGE: image name
+  #  - OKTETO_BUILD_SERVER_PRODUCTION_TAG: image tag
   server_production:
     context: .
     dockerfile: ./apps/server/Dockerfile
+
+# The deploy section defines how to deploy your development environment
+# More info: https://www.okteto.com/docs/reference/manifest/#deploy
 deploy:
-  - name: Deploy Via Helm
-    command: helm uninstall deadmansswitch; helm repo add bitnami https://charts.bitnami.com/bitnami; helm dep build ./helm; helm install deadmansswitch ./helm;
+  commands:
+    - name: Deploy Via Helm
+      command: helm uninstall deadmansswitch; helm repo add bitnami https://charts.bitnami.com/bitnami; helm dep build ./helm; helm install deadmansswitch ./helm;
+
+# The dependencies section defines other git repositories to be deployed as part of your development environment
+# More info: https://www.okteto.com/docs/reference/manifest/#dependencies
+# dependencies:
+#   - https://github.com/okteto/sample
+# The dev section defines how to activate a development container
+# More info: https://www.okteto.com/docs/reference/manifest/#dev
+# dev:
+#   sample:
+#     image: okteto/dev:latest
+#     command: bash
+#     workdir: /usr/src/app
+#     sync:
+#       - .:/usr/src/app
+#     environment:
+#       - name=$USER
+#     forward:
+#       - 8080:80
+
