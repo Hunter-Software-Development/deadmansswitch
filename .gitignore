@@ -34,4 +34,3 @@ lerna-debug.log*
 !.vscode/launch.json
 !.vscode/extensions.json
 .env
-helm/templates/client/secret.yaml
