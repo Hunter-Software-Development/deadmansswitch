@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: server
-          image: iamhunter/deadmansswitch:server_production
+          image: {{ .Values.server.image }}
           resources:
             limits:
               memory: '128Mi'

@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: client
-          image: iamhunter/deadmansswitch:client_production
+          image: {{ .Values.client.image }}
           resources:
             limits:
               memory: '128Mi'

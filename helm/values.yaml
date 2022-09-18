@@ -85,6 +85,12 @@ tolerations: []
 
 affinity: {}
 
+client:
+  image: iamhunter/deadmansswitch:client_production
+
+server:
+  image: iamhunter/deadmansswitch:server_production
+
 mongodb:
   architecture: replicaset
   auth:
