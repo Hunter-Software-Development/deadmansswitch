@@ -3,20 +3,21 @@ name: deadmansswitch
 # The build section defines how to build the images of your development environment
 # More info: https://www.okteto.com/docs/reference/manifest/#build
 build:
+
   # You can use the following env vars to refer to this image in your deploy commands:
-  #  - OKTETO_BUILD_CLIENT_PRODUCTION_REGISTRY: image registry
-  #  - OKTETO_BUILD_CLIENT_PRODUCTION_REPOSITORY: image repo
-  #  - OKTETO_BUILD_CLIENT_PRODUCTION_IMAGE: image name
-  #  - OKTETO_BUILD_CLIENT_PRODUCTION_TAG: image tag
+  #  - OKTETO_BUILD_CLIENT_REGISTRY: image registry
+  #  - OKTETO_BUILD_CLIENT_REPOSITORY: image repo
+  #  - OKTETO_BUILD_CLIENT_IMAGE: image name
+  #  - OKTETO_BUILD_CLIENT_TAG: image tag
   client:
     context: ./apps/client
     dockerfile: Dockerfile
 
   # You can use the following env vars to refer to this image in your deploy commands:
-  #  - OKTETO_BUILD_SERVER_PRODUCTION_REGISTRY: image registry
-  #  - OKTETO_BUILD_SERVER_PRODUCTION_REPOSITORY: image repo
-  #  - OKTETO_BUILD_SERVER_PRODUCTION_IMAGE: image name
-  #  - OKTETO_BUILD_SERVER_PRODUCTION_TAG: image tag
+  #  - OKTETO_BUILD_SERVER_REGISTRY: image registry
+  #  - OKTETO_BUILD_SERVER_REPOSITORY: image repo
+  #  - OKTETO_BUILD_SERVER_IMAGE: image name
+  #  - OKTETO_BUILD_SERVER_TAG: image tag
   server:
     context: .
     dockerfile: ./apps/server/Dockerfile
@@ -26,7 +27,8 @@ build:
 deploy:
   commands:
     - name: Deploy Via Helm
-      command: helm uninstall deadmansswitch; helm repo add bitnami https://charts.bitnami.com/bitnami; helm upgrade --install deadmansswitch ./helm  --set client.image=${OKTETO_BUILD_client_IMAGE} --set server.image=${OKTETO_BUILD_server_IMAGE};
+      command: helm uninstall deadmansswitch; helm repo add bitnami https://charts.bitnami.com/bitnami; helm upgrade --install deadmansswitch ./helm  --set client.image=${OKTETO_BUILD_CLIENT_IMAGE} --set server.image=${OKTETO_BUILD_SERVER_IMAGE};
+
 # The dependencies section defines other git repositories to be deployed as part of your development environment
 # More info: https://www.okteto.com/docs/reference/manifest/#dependencies
 # dependencies:
