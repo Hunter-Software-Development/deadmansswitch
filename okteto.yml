@@ -27,7 +27,7 @@ build:
 deploy:
   commands:
     - name: Deploy Via Helm
-      command: helm uninstall deadmansswitch; helm repo add bitnami https://charts.bitnami.com/bitnami; helm upgrade --install deadmansswitch ./helm  --set client.image=${OKTETO_BUILD_CLIENT_IMAGE} --set server.image=${OKTETO_BUILD_SERVER_IMAGE};
+      command: helm uninstall deadmansswitch; helm repo add bitnami https://charts.bitnami.com/bitnami; helm upgrade --install deadmansswitch ./helm  --set client.image=${OKTETO_BUILD_CLIENT_IMAGE} --set server.image=${OKTETO_BUILD_SERVER_IMAGE} --set server.REACT_APP_GRAPHQL_URL_VAR=https://ingress-dms-hunter-software-development-deadmansswitch-pr-1.cloud.okteto.net/server;
 
 # The dependencies section defines other git repositories to be deployed as part of your development environment
 # More info: https://www.okteto.com/docs/reference/manifest/#dependencies
