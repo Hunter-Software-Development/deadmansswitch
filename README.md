@@ -10,8 +10,10 @@ localhost:3030/graphql
 docker-compose down; docker-compose build --no-cache; docker-compose up -d;
 
 
-docker build -t client_production -f ./apps/client/Dockerfile.prod ./apps/client ;
-docker build -t server_production -f ./apps/server/Dockerfile . ;
+docker build -t iamhunter/deadmansswitch:client_production -f ./apps/client/Dockerfile.prod ./apps/client ;
+docker push iamhunter/deadmansswitch:client_production;
+docker build -t iamhunter/deadmansswitch:server_production -f ./apps/server/Dockerfile . ;
+docker push iamhunter/deadmansswitch:server_production;
 
 
 helm uninstall deadmansswitch;
@@ -25,3 +27,7 @@ docker run -it -p 3000:3000 --rm client_production:latest;
 docker exec -it keen_villani sh;
 
 kubectl delete pvc --all;
+
+
+
+

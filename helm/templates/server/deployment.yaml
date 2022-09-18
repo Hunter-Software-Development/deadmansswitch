@@ -14,8 +14,7 @@ spec:
     spec:
       containers:
         - name: server
-          image: server_production:latest
-          imagePullPolicy: Never
+          image: iamhunter/deadmansswitch:server_production
           resources:
             limits:
               memory: '128Mi'

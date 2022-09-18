@@ -14,8 +14,7 @@ spec:
     spec:
       containers:
         - name: client
-          image: client_production:latest
-          imagePullPolicy: Never
+          image: iamhunter/deadmansswitch:client_production
           resources:
             limits:
               memory: '128Mi'
