@@ -20,7 +20,7 @@ function App() {
     const initializeGoogleSignIn = () => {
         window.onload = function () {
             window.google.accounts.id.initialize({
-                client_id: process.env.REACT_APP_GOOGLE_CLIENT,
+                client_id: "401968243070-pngp8trfvlt9saqfs420cs5082341n9p.apps.googleusercontent.com",
                 callback: handleCredentialResponse,
             });
             window.google.accounts.id.renderButton(
