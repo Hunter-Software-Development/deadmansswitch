@@ -26,7 +26,7 @@ build:
 deploy:
   commands:
     - name: Deploy Via Helm
-      command: helm repo add bitnami https://charts.bitnami.com/bitnami; helm upgrade --install deadmansswitch ./helm  --set client.image=${OKTETO_BUILD_client_IMAGE} --set server.image=${OKTETO_BUILD_server_IMAGE};
+      command: helm uninstall deadmansswitch; helm repo add bitnami https://charts.bitnami.com/bitnami; helm upgrade --install deadmansswitch ./helm  --set client.image=${OKTETO_BUILD_client_IMAGE} --set server.image=${OKTETO_BUILD_server_IMAGE};
 # The dependencies section defines other git repositories to be deployed as part of your development environment
 # More info: https://www.okteto.com/docs/reference/manifest/#dependencies
 # dependencies:
