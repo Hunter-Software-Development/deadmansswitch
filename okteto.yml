@@ -11,7 +11,7 @@ build:
   #  - OKTETO_BUILD_CLIENT_TAG: image tag
   client:
     context: ./apps/client
-    dockerfile: Dockerfile
+    dockerfile: Dockerfile.prod
 
   # You can use the following env vars to refer to this image in your deploy commands:
   #  - OKTETO_BUILD_SERVER_REGISTRY: image registry
