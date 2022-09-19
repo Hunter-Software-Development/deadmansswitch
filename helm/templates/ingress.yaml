@@ -10,14 +10,14 @@ spec:
   rules:
     - http:
         paths:
-          - path: /server(/|$)(.*)
+          - path: /server
             pathType: Prefix
             backend:
               service:
                 name: server
                 port:
                   number: 3030
-          - path: /client(/|$)(.*)
+          - path: /client
             pathType: Prefix
             backend:
               service:
