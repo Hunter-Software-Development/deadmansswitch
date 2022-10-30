@@ -7,7 +7,7 @@ import reportWebVitals from './reportWebVitals';
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 
 const client = new ApolloClient({
-  uri: process.env.REACT_APP_GRAPHQL_URL_VAR,
+ uri: 'https://ingress-dms-hunter-software-development-deadmansswitch-pr-5.cloud.okteto.net/server/graphql',
   cache: new InMemoryCache(),
 });
 
