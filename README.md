@@ -9,6 +9,7 @@ localhost:3030/graphql
 
 docker-compose down; docker-compose build --no-cache; docker-compose up -d;
 
+## Build and push for Docker
 
 docker build -t iamhunter/deadmansswitch:client_production -f ./apps/client/Dockerfile.prod ./apps/client ;
 docker push iamhunter/deadmansswitch:client_production;
