@@ -6,8 +6,13 @@ import reportWebVitals from './reportWebVitals';
 
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 
+const apolloUri =
+  window.location.origin.toString() === 'http://localhost:3000'
+    ? 'http://localhost:3030/graphql'
+    : `${window.location.origin.toString()}/server/graphql`;
+
 const client = new ApolloClient({
-  uri: `${window.location.origin.toString()}/server/graphql`,
+  uri: apolloUri,
   cache: new InMemoryCache(),
 });
 

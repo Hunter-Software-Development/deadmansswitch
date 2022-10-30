@@ -90,7 +90,6 @@ client:
 
 server:
   image: iamhunter/deadmansswitch:server_production
-  REACT_APP_GRAPHQL_URL_VAR: http://localhost/server/graphql
 
 mongodb:
   architecture: replicaset
