@@ -47,7 +47,7 @@ function App() {
 
     return (
         <div className="App">
-            <BrowserRouter>
+            <BrowserRouter basename="/client">
                 <Header user={user} />
                 <main>
                     <Routes>
