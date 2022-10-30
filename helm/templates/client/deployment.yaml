@@ -27,5 +27,3 @@ spec:
                 secretKeyRef:
                   key: REACT_APP_GOOGLE_CLIENT
                   name: mysecret
-            - name: REACT_APP_GRAPHQL_URL_VAR
-              value: {{ .Values.server.REACT_APP_GRAPHQL_URL_VAR }}
