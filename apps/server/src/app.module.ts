@@ -15,7 +15,9 @@ import { VaultsModule } from './vaults/vaults.module';
       driver: ApolloDriver,
       autoSchemaFile: process.cwd() + '/src/schema.gql',
     }),
-    MongooseModule.forRoot(process.env.MONGO_DB_CONNECTION),
+    MongooseModule.forRoot(process.env.MONGO_DB_CONNECTION, {
+      dbName: 'deadmansswitch',
+    }),
     VaultsModule,
   ],
   controllers: [AppController],

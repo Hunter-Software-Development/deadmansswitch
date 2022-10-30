@@ -1,4 +1,4 @@
-FROM node:alpine As development
+FROM node:alpine as development
 
 WORKDIR /usr/src/app
 COPY --chown=node:node package*.json ./
@@ -8,7 +8,6 @@ RUN mkdir node_modules/.cache && chmod -R 777 node_modules/.cache
 USER node
 
 FROM node:alpine as build
-
 
 WORKDIR /usr/src/app
 
@@ -26,4 +25,4 @@ FROM node:alpine as production
 COPY --chown=node:node --from=build /usr/src/app/node_modules ./node_modules
 COPY --chown=node:node --from=build /usr/src/app/dist ./dist
 
-CMD ["node", "dist/apps/deadmansswitchbe/main"]
+CMD ["node", "dist/apps/server/main"]

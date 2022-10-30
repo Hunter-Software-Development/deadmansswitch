@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: server
+spec:
+  selector:
+    matchLabels:
+      app: server
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: server
+    spec:
+      containers:
+        - name: server
+          image: {{ .Values.server.image }}
+          resources:
+            limits:
+              memory: '128Mi'
+              cpu: '500m'
+          ports:
+            - containerPort: 3030
+          env:
+            - name: MONGO_DB_CONNECTION
+              value: mongodb://root:password123@deadmansswitch-mongodb-headless:27017
+            - name: PORT
+              value: '3030'

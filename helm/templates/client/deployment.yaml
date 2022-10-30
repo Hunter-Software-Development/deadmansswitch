@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: client
+spec:
+  selector:
+    matchLabels:
+      app: client
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: client
+    spec:
+      containers:
+        - name: client
+          image: {{ .Values.client.image }}
+          resources:
+            limits:
+              memory: '128Mi'
+              cpu: '500m'
+          ports:
+            - containerPort: 3000
+          env:
+            - name: REACT_APP_GOOGLE_CLIENT
+              valueFrom:
+                secretKeyRef:
+                  key: REACT_APP_GOOGLE_CLIENT
+                  name: mysecret
+            - name: REACT_APP_GRAPHQL_URL_VAR
+              value: {{ .Values.server.REACT_APP_GRAPHQL_URL_VAR }}
