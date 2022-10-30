@@ -12,11 +12,11 @@ docker-compose down; docker-compose build --no-cache; docker-compose up -d;
 
 ## Build and push for Docker
 
-docker build -t iamhunter/deadmansswitch:client_production -f ./apps/client/Dockerfile.prod ./apps/client ;
-docker push iamhunter/deadmansswitch:client_production;
+
 docker build -t iamhunter/deadmansswitch:server_production -f ./apps/server/Dockerfile . ;
 docker push iamhunter/deadmansswitch:server_production;
-
+docker build -t iamhunter/deadmansswitch:client_production -f ./apps/client/Dockerfile.prod ./apps/client ;
+docker push iamhunter/deadmansswitch:client_production;
 
 helm uninstall deadmansswitch;
 helm dep build ./helm;

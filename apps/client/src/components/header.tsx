@@ -84,7 +84,7 @@ export default function Header(props: { user: { picture: string; credential: str
                                         {navigation.map(
                                             (item) =>
                                                 item.dependency && (
-                                                    <NavLink to={item.route} key={item.name} className={({ isActive }) => classNames(isActive ? "bg-gray-900 dark:bg-gray-800 text-white" : "text-gray-300 hover:bg-gray-700 hover:text-white", "px-3 py-2 rounded-md text-sm font-medium")}>
+                                                    <NavLink to={item.route} key={item.name} className={({ isActive }) => classNames(isActive ? "bg-gray-900 dark:bg-gray-800 text-white" : "text-gray-300 hover:bg-gray-700 hover:text-white", "px-3 py-2 rounded-md text-sm font-medium")} end>
                                                         {item.name}
                                                     </NavLink>
                                                 )
