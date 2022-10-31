@@ -1,4 +1,4 @@
-import { Resolver, Query, Mutation, Args, Int } from '@nestjs/graphql';
+import { Resolver, Query, Mutation, Args } from '@nestjs/graphql';
 import { VaultsService } from './vaults.service';
 import { Vault } from './entities/vault.entity';
 import { CreateVaultInput } from './dto/create-vault.input';

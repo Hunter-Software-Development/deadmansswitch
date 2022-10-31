@@ -27,9 +27,12 @@ export class VaultsService {
     return savedVault;
   }
 
-  async findAll(googleCredential: string) {
+  async findAll(googleCredential: string): Promise<Vault[]> {
     const decodedCredential: { sub: string } = jwt_decode(googleCredential);
-    return await this.vaultModel.find({ googleId: decodedCredential.sub });
+    const foundVaults: Vault[] = await this.vaultModel.find({
+      googleId: decodedCredential.sub,
+    });
+    return foundVaults;
   }
 
   async update(updateVaultInput: UpdateVaultInput) {
