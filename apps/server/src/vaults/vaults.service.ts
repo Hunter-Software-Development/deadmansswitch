@@ -12,7 +12,7 @@ import { Vault } from './entities/vault.schema';
 @Injectable()
 export class VaultsService {
   constructor(@InjectModel(Vault.name) private vaultModel: Model<Vault>) {}
-  async create(createVaultInput: CreateVaultInput) {
+  async create(createVaultInput: CreateVaultInput): Promise<Vault> {
     const decodedCredential: { sub: string } = jwt_decode(
       createVaultInput.googleCredential,
     );
@@ -23,7 +23,7 @@ export class VaultsService {
     };
 
     const createdVault = new this.vaultModel(newVault);
-    const savedVault = await createdVault.save();
+    const savedVault: Vault = await createdVault.save();
     return savedVault;
   }
 

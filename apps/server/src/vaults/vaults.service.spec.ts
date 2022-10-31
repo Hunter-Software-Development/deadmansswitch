@@ -4,6 +4,7 @@ import { VaultsService } from './vaults.service';
 import { getModelToken } from '@nestjs/mongoose';
 import { VaultSchema } from './entities/vault.schema';
 import { Vault } from './entities/vault.entity';
+import { CreateVaultInput } from './dto/create-vault.input';
 
 describe('VaultsService', () => {
   let service: VaultsService;
@@ -26,6 +27,23 @@ describe('VaultsService', () => {
     expect(service).toBeDefined();
   });
 
+  describe('create', () => {
+    it('should run create', async () => {
+      const result: Vault = {
+        _id: 'test_id',
+        googleId: 'test_google_id',
+        data: 'test_data',
+      };
+      const arg: CreateVaultInput = {
+        googleCredential: 'test_google_cred',
+        data: 'test_data',
+      };
+      jest.spyOn(service, 'create').mockImplementation(async () => result);
+
+      expect(await service.create(arg)).toBe(result);
+    });
+  });
+
   describe('findAll', () => {
     it('should return an array of Vaults', async () => {
       const result: Vault[] = [
@@ -36,7 +54,7 @@ describe('VaultsService', () => {
         },
       ];
       const arg = 'test_google_cred';
-      jest.spyOn(service, 'findAll').mockImplementation(async (arg) => result);
+      jest.spyOn(service, 'findAll').mockImplementation(async () => result);
 
       expect(await service.findAll(arg)).toBe(result);
     });
