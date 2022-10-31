@@ -35,23 +35,22 @@ export class VaultsService {
     return foundVaults;
   }
 
-  async update(updateVaultInput: UpdateVaultInput) {
+  async update(updateVaultInput: UpdateVaultInput): Promise<Vault> {
     const decodedCredential: { sub: string } = jwt_decode(
       updateVaultInput.googleCredential,
     );
 
-    const updatedVault = await this.vaultModel.findOneAndUpdate(
+    const updatedVault: Vault = await this.vaultModel.findOneAndUpdate(
       { _id: updateVaultInput._id, googleId: decodedCredential.sub },
       { data: updateVaultInput.data },
       // This new tag tells Mongoose to return the updated version of the document instead of the old one
       { new: true },
     );
 
-    console.log(updatedVault);
     return updatedVault;
   }
 
-  async remove(removeVaultInput) {
+  async remove(removeVaultInput): Promise<Vault> {
     const decodedCredential: { sub: string } = jwt_decode(
       removeVaultInput.googleCredential,
     );
@@ -61,7 +60,7 @@ export class VaultsService {
     });
   }
 
-  async findOne(getVaultInput: GetVaultInput) {
+  async findOne(getVaultInput: GetVaultInput): Promise<Vault> {
     return await this.vaultModel.findOne({ _id: getVaultInput._id });
   }
 }
