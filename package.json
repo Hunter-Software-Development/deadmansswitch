@@ -19,6 +19,7 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./apps/server/test/jest-e2e.json",
+    "test:docker:e2e": "docker-compose -f docker-compose.e2e.yml up --abort-on-container-exit --exit-code-from server && docker-compose down",
     "installall": "npm install && cd ./apps/client && npm install"
   },
   "dependencies": {
@@ -28,8 +29,10 @@
     "@nestjs/graphql": "^10.0.18",
     "@nestjs/mongoose": "^9.2.0",
     "@nestjs/platform-express": "^9.0.2",
+    "@nestjs/throttler": "^3.1.0",
     "apollo-server-express": "^3.7.0",
     "graphql": "^16.4.0",
+    "helmet": "^6.0.0",
     "jwt-decode": "^3.1.2",
     "mongoose": "^6.3.2",
     "reflect-metadata": "^0.1.13",
@@ -40,7 +43,7 @@
   "devDependencies": {
     "@nestjs/cli": "^9.0.0",
     "@nestjs/schematics": "^9.0.1",
-    "@nestjs/testing": "^9.0.2",
+    "@nestjs/testing": "^9.1.6",
     "@types/express": "^4.17.13",
     "@types/jest": "^28.1.4",
     "@types/node": "^18.0.3",

@@ -8,11 +8,13 @@ npm update; cd apps/client; npm update; cd ../../;
 
 ### Run through docker-compose
 
-docker-compose down; docker-compose build --no-cache; docker-compose up -d;
+docker-compose down;  
+docker-compose build --no-cache;  
+docker-compose up -d;
 
 ### Access here
 
-localhost:3000
+localhost:3000  
 localhost:3030/graphql
 
 ## Running locally through Helm
@@ -30,7 +32,7 @@ helm uninstall deadmansswitch;
 helm dep build ./helm;
 helm install deadmansswitch ./helm;
 
-### Access here
+### Access helm here
 
 localhost/client  
 localhost/server/graphql

@@ -12,7 +12,7 @@ import { Vault } from './entities/vault.schema';
 @Injectable()
 export class VaultsService {
   constructor(@InjectModel(Vault.name) private vaultModel: Model<Vault>) {}
-  async create(createVaultInput: CreateVaultInput) {
+  async create(createVaultInput: CreateVaultInput): Promise<Vault> {
     const decodedCredential: { sub: string } = jwt_decode(
       createVaultInput.googleCredential,
     );
@@ -23,32 +23,34 @@ export class VaultsService {
     };
 
     const createdVault = new this.vaultModel(newVault);
-    const savedVault = await createdVault.save();
+    const savedVault: Vault = await createdVault.save();
     return savedVault;
   }
 
-  async findAll(googleCredential: string) {
+  async findAll(googleCredential: string): Promise<Vault[]> {
     const decodedCredential: { sub: string } = jwt_decode(googleCredential);
-    return await this.vaultModel.find({ googleId: decodedCredential.sub });
+    const foundVaults: Vault[] = await this.vaultModel.find({
+      googleId: decodedCredential.sub,
+    });
+    return foundVaults;
   }
 
-  async update(updateVaultInput: UpdateVaultInput) {
+  async update(updateVaultInput: UpdateVaultInput): Promise<Vault> {
     const decodedCredential: { sub: string } = jwt_decode(
       updateVaultInput.googleCredential,
     );
 
-    const updatedVault = await this.vaultModel.findOneAndUpdate(
+    const updatedVault: Vault = await this.vaultModel.findOneAndUpdate(
       { _id: updateVaultInput._id, googleId: decodedCredential.sub },
       { data: updateVaultInput.data },
       // This new tag tells Mongoose to return the updated version of the document instead of the old one
       { new: true },
     );
 
-    console.log(updatedVault);
     return updatedVault;
   }
 
-  async remove(removeVaultInput) {
+  async remove(removeVaultInput): Promise<Vault> {
     const decodedCredential: { sub: string } = jwt_decode(
       removeVaultInput.googleCredential,
     );
@@ -58,7 +60,7 @@ export class VaultsService {
     });
   }
 
-  async findOne(getVaultInput: GetVaultInput) {
+  async findOne(getVaultInput: GetVaultInput): Promise<Vault> {
     return await this.vaultModel.findOne({ _id: getVaultInput._id });
   }
 }
