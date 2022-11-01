@@ -9,6 +9,11 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { VaultsModule } from './vaults/vaults.module';
 
+/**
+ * Main Nest Module
+ *
+ * Serves as an entry point to the application
+ */
 @Module({
   imports: [
     ConfigModule.forRoot(),
