@@ -24,6 +24,5 @@ FROM node:alpine as production
 
 COPY --chown=node:node --from=build /usr/src/app/node_modules ./node_modules
 COPY --chown=node:node --from=build /usr/src/app/dist ./dist
-RUN chmod -R 777 /usr/src/app/apps/server/src/schema.gql
 
 CMD ["node", "dist/apps/server/main"]
