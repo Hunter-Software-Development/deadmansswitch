@@ -10,4 +10,4 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Run the tests
-        run: sudo npm run test:docker:e2e
+        run: docker-compose -f docker-compose.e2e.yml up --abort-on-container-exit --exit-code-from server
