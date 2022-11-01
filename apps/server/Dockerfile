@@ -5,6 +5,7 @@ COPY --chown=node:node package*.json ./
 RUN npm ci
 COPY --chown=node:node . .
 RUN mkdir node_modules/.cache && chmod -R 777 node_modules/.cache
+RUN chmod -R 777 apps/server/src/schema.gql
 USER node
 
 FROM node:alpine as build
