@@ -19,6 +19,7 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./apps/server/test/jest-e2e.json",
+    "test:docker:e2e": "docker-compose -f docker-compose.e2e.yml up --abort-on-container-exit --exit-code-from server && docker-compose down",
     "installall": "npm install && cd ./apps/client && npm install"
   },
   "dependencies": {
