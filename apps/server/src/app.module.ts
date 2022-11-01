@@ -13,7 +13,7 @@ import { VaultsModule } from './vaults/vaults.module';
     ConfigModule.forRoot(),
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
-      autoSchemaFile: process.cwd() + '/src/schema.gql',
+      autoSchemaFile: process.cwd() + '/apps/server/src/schema.gql',
     }),
     MongooseModule.forRoot(process.env.MONGO_DB_CONNECTION, {
       dbName: 'deadmansswitch',
