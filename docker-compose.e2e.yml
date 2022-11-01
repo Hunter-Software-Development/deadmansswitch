@@ -2,12 +2,13 @@ services:
   server:
     environment:
       - WATCHPACK_POLLING=true
+      - MONGO_DB_CONNECTION=mongodb://root:password123@mongodb-primary:27017/deadmansswitch?directConnection=true&ssl=false&authSource=admin&w=1
+      - PORT=3030
     build:
       context: .
       dockerfile: ./apps/server/Dockerfile
       target: development
     command: npm run test:e2e
-    env_file: ./.env
     depends_on:
       - mongodb-primary
       - mongodb-secondary
