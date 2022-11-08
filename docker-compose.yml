@@ -21,7 +21,6 @@ services:
       dockerfile: ./apps/server/Dockerfile
       target: development
     command: npm run start:dev server
-    env_file: ./.env
     depends_on:
       - mongodb-primary
       - mongodb-secondary

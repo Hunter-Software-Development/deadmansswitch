@@ -181,7 +181,6 @@ import { ConfigModule } from &#x27;@nestjs/config&#x27;;
 import { GraphQLModule } from &#x27;@nestjs/graphql&#x27;;
 import { ApolloDriver, ApolloDriverConfig } from &#x27;@nestjs/apollo&#x27;;
 import { MongooseModule } from &#x27;@nestjs/mongoose&#x27;;
-import { ApolloServerPluginLandingPageLocalDefault } from &#x27;apollo-server-core&#x27;;
 
 import { AppController } from &#x27;./app.controller&#x27;;
 import { AppService } from &#x27;./app.service&#x27;;
@@ -198,12 +197,14 @@ import { VaultsModule } from &#x27;./vaults/vaults.module&#x27;;
     GraphQLModule.forRoot&lt;ApolloDriverConfig&gt;({
       driver: ApolloDriver,
       autoSchemaFile: process.cwd() + &#x27;/apps/server/src/schema.gql&#x27;,
-      playground: false,
-      plugins: [ApolloServerPluginLandingPageLocalDefault()],
     }),
-    MongooseModule.forRoot(process.env.MONGO_DB_CONNECTION, {
-      dbName: &#x27;deadmansswitch&#x27;,
-    }),
+    MongooseModule.forRoot(
+      process.env.MONGO_DB_CONNECTION ||
+        &#x27;mongodb://root:password123@deadmansswitch-mongodb-primary-1:27017&#x27;,
+      {
+        dbName: &#x27;deadmansswitch&#x27;,
+      },
+    ),
     VaultsModule,
   ],
   controllers: [AppController],

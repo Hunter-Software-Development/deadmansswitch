@@ -42,3 +42,11 @@ localhost/server/graphql
 kubectl get service;
 kubectl get po;
 kubectl get ing;
+
+### Generate Documentation
+
+npx @compodoc/compodoc -p tsconfig.json -s -w
+
+#### Access documentation here
+
+localhost:8080
